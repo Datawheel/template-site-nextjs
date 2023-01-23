@@ -1,12 +1,12 @@
 # nextjs-site
 
-# Docker
+## Docker
 
-## Use of local environments
+### Use of local environments
 
 If you are using node directly to develop, please recall your typical `.env` file to `.env.local`. For this, use `.env` as a guide
 
-## Using Docker to Develop
+### Using Docker to Develop
 
 1. [Install Docker](https://docs.docker.com/engine/install/) on your machine
 2. Build your container with:
