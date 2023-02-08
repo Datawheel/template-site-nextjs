@@ -1,5 +1,15 @@
 # nextjs-site
 
+## Nextjs
+
+For this part, you need to install Node 16 on you system. We recommend using [nvm](https://github.com/nvm-sh/nvm)
+
+### Create the app
+
+```
+npx create-next-app .
+```
+
 ## Docker
 
 ### Use of local environments
