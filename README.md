@@ -1,38 +1,23 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# nextjs-site
 
-## Getting Started
+## Docker
 
-First, run the development server:
+### Use of local environments
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+If you are using node directly to develop, please recall your typical `.env` file to `.env.local`. For this, use `.env` as a guide
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Using Docker to Develop
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+1. [Install Docker](https://docs.docker.com/engine/install/) on your machine
+2. Build your container with:
+  - NO ENV VARS AT BUILDTIME: `docker build -t <PROJECT_NAME>-nextjs-site .`
+  - WITH ENV VARS AT BUILDTIME: `docker build --build-arg <ENV_NAME>=<ENV_VALUE> -t <PROJECT_NAME>-nextjs-site .`
+3. Run your container: 
+  - NO ENV VARS AT RUNTIME: `docker run -p 3000:3000 <PROJECT_NAME>-nextjs-site`
+  - WITH ENV VARS AT RUNTIME: `docker run --env-file=./.env.local -p 3000:3000 <PROJECT_NAME>-nextjs-site`
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+---
+### References
+- [https://github.com/vercel/next.js/tree/canary/examples/with-docker](https://github.com/vercel/next.js/tree/canary/examples/with-docker)
+- [https://docs.docker.com/engine/reference/commandline/build/#-set-build-time-variables---build-arg](https://docs.docker.com/engine/reference/commandline/build/#-set-build-time-variables---build-arg)
+- [https://docs.docker.com/engine/reference/commandline/run/#-set-environment-variables--e---env---env-file](https://docs.docker.com/engine/reference/commandline/run/#-set-environment-variables--e---env---env-file)
