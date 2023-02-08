@@ -9,7 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@next/eslint-plugin-next": "^13.1.6",
     "@next/font": "13.1.6",
+    "@typescript-eslint/eslint-plugin": "^5.51.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-react": "^7.32.2",
     "next": "13.1.6",
     "react": "18.2.0",
     "react-dom": "18.2.0"
