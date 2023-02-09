@@ -6,7 +6,7 @@ To start using this template, just create a new repository from this template an
 ```
 npm run dev
 ```
-If you need to implement language translations on your site, create your repository from the `nextjs-13-no-typescript-translations` branch.
+This template implements language translations for your site, if you don't need them, create your repository from the `nextjs-13-no-typescript` branch.
 ## Docker
 
 ### Use of local environments
