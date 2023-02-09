@@ -6,7 +6,7 @@ To start using this template, just create a new repository from this template an
 ```
 npm run dev
 ```
-This template implements language translations for your site, if you don't need them, create your repository from the `nextjs-13-no-typescript-dependencies` branch.
+This template implements language translations for your site, if you don't need them, create your repository from the [nextjs-13-no-typescript-dependencies](https://github.com/Datawheel/template-site-nextjs/tree/nextjs-13-no-typescript-dependencies) branch.
 ## Docker
 
 ### Use of local environments
