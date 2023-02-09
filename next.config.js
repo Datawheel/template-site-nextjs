@@ -1,8 +1,6 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-  // This will build the project as a standalone app inside the Docker image
-  output: 'standalone',
-}
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const {i18n} = require("./next-i18next.config");
 
-module.exports = nextConfig
+module.exports = {
+  i18n,
+};
