@@ -1,12 +1,12 @@
 # NextJS 13 Template
 
-This is a NextJS template for projects using [Mantine](https://mantine.dev/guides/next/) components with SSR support. It implements linter checks through GitHub Actions, and [NextSEO](https://github.com/garmeeh/next-seo) for Search Engine Optimization. 
+This is a NextJS template for projects using [Mantine](https://mantine.dev/guides/next/) components with SSR support. It implements linter checks through GitHub Actions, [NextSEO](https://github.com/garmeeh/next-seo) for Search Engine Optimization, and server-side translations using [next-i18next](https://github.com/i18next/next-i18next). 
 To start using this template, just create a new repository from this template and start coding 🎉
 
 ```
 npm run dev
 ```
-If you need to implement language translations on your site, create your repository from the `nextjs-13-no-typescript-translations` branch.
+This template implements language translations for your site, if you don't need them, create your repository from the `nextjs-13-no-typescript` branch.
 ## Docker
 
 ### Use of local environments
@@ -31,3 +31,4 @@ If you are using node directly to develop, please recall your typical `.env` fil
 - [https://nextjs.org/docs/](https://nextjs.org/docs/getting-started)
 - [https://mantine.dev/guides/next/](https://mantine.dev/guides/next/)
 - [https://github.com/garmeeh/next-seo](https://github.com/garmeeh/next-seo)
+- [https://github.com/i18next/next-i18next](https://github.com/i18next/next-i18next)
