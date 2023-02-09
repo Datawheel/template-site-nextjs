@@ -25,9 +25,9 @@ If you are using node directly to develop, please recall your typical `.env` fil
 
 ---
 ### References
-- [https://github.com/vercel/next.js/tree/canary/examples/with-docker](https://github.com/vercel/next.js/tree/canary/examples/with-docker)
-- [https://docs.docker.com/engine/reference/commandline/build/#-set-build-time-variables---build-arg](https://docs.docker.com/engine/reference/commandline/build/#-set-build-time-variables---build-arg)
-- [https://docs.docker.com/engine/reference/commandline/run/#-set-environment-variables--e---env---env-file](https://docs.docker.com/engine/reference/commandline/run/#-set-environment-variables--e---env---env-file)
 - [https://nextjs.org/docs/](https://nextjs.org/docs/getting-started)
 - [https://mantine.dev/guides/next/](https://mantine.dev/guides/next/)
 - [https://github.com/garmeeh/next-seo](https://github.com/garmeeh/next-seo)
+- [https://github.com/vercel/next.js/tree/canary/examples/with-docker](https://github.com/vercel/next.js/tree/canary/examples/with-docker)
+- [https://docs.docker.com/engine/reference/commandline/build/#-set-build-time-variables---build-arg](https://docs.docker.com/engine/reference/commandline/build/#-set-build-time-variables---build-arg)
+- [https://docs.docker.com/engine/reference/commandline/run/#-set-environment-variables--e---env---env-file](https://docs.docker.com/engine/reference/commandline/run/#-set-environment-variables--e---env---env-file)
