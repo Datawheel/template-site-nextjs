@@ -9,7 +9,8 @@ import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 
 export default function Home() {
   // You should override this component
-  const {t} = useTranslation();
+
+  const {t} = useTranslation("common");
   return (
     <>
       <NextSeo
