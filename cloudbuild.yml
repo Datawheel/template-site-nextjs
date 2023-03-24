@@ -1,0 +1,16 @@
+steps:
+  # [START cloudbuild_image_yaml]
+  # Docker Build
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["build", "-t", "${_GCP_ARTIFACT_REGISTRY_LOCATION}-docker.pkg.dev/${_GCP_PROJECT_ID}/${_GCP_ARTIFACT_REGISTRY_NAME}/${_GCP_CLOUDRUN_SERVICE}:${_GITHUB_SHA}", "--build-arg", "NEXT_PUBLIC_CMS=${_NEXT_PUBLIC_CMS}", "--build-arg", "NEXT_PUBLIC_TESSERACT=${_NEXT_PUBLIC_TESSERACT}", "."]
+  # [END cloudbuild_image_yaml]
+substitutions:
+  _GCP_ARTIFACT_REGISTRY_LOCATION: "us-central1"
+  _GCP_PROJECT_ID: "empty"
+  _GCP_ARTIFACT_REGISTRY_NAME: "empty"
+  _GCP_CLOUDRUN_SERVICE: "empty"
+  _GITHUB_SHA: "empty"
+  _NEXT_PUBLIC_CMS: "empty"
+  _NEXT_PUBLIC_TESSERACT: "empty"
+images:
+- "${_GCP_ARTIFACT_REGISTRY_LOCATION}-docker.pkg.dev/${_GCP_PROJECT_ID}/${_GCP_ARTIFACT_REGISTRY_NAME}/${_GCP_CLOUDRUN_SERVICE}:${_GITHUB_SHA}"

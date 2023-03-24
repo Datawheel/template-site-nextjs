@@ -1,4 +1,4 @@
-name: run linter checks
+name: Run Linter Checks
 on:
   push:
     branches:
