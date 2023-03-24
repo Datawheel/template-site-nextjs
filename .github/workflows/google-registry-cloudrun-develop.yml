@@ -54,12 +54,12 @@
 #      NEXT_PUBLIC_TESSERACT             (NextJS Public Tesseract Url)
 #
 # Further reading:
-#   Cloud Run IAM permissions                 - https://cloud.google.com/run/docs/deploying
-#   Artifact Registry IAM permissions         - https://cloud.google.com/artifact-registry/docs/access-control#roles
-#   Container Registry vs Artifact Registry   - https://cloud.google.com/blog/products/application-development/understanding-artifact-registry-vs-container-registry
-#   Principle of least privilege              - https://cloud.google.com/blog/products/identity-security/dont-get-pwned-practicing-the-principle-of-least-privilege
-#   Deploy CloudRun Github Actions            - https://github.com/google-github-actions/deploy-cloudrun
-name: Build to Artifact Registry and Deploy to Cloud Run
+#    Cloud Run IAM permissions                 - https://cloud.google.com/run/docs/deploying
+#    Artifact Registry IAM permissions         - https://cloud.google.com/artifact-registry/docs/access-control#roles
+#    Container Registry vs Artifact Registry   - https://cloud.google.com/blog/products/application-development/understanding-artifact-registry-vs-container-registry
+#    Principle of least privilege              - https://cloud.google.com/blog/products/identity-security/dont-get-pwned-practicing-the-principle-of-least-privilege
+#    Deploy CloudRun Github Actions            - https://github.com/google-github-actions/deploy-cloudrun
+name: [Google Cloud] Build to Artifact Registry and Deploy Dev to Cloud Run
 
 on:
   push:
@@ -96,7 +96,8 @@ jobs:
           gcloud builds submit \
             --quiet \
             --timeout=20m \
-            --tag ${{ env.GCP_ARTIFACT_REGISTRY_LOCATION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/${{ env.GCP_ARTIFACT_REGISTRY_NAME }}/${{ env.GCP_CLOUDRUN_SERVICE }}:${{ github.sha }}
+            --config=cloudbuild.yml \
+            --substitutions=_GCP_ARTIFACT_REGISTRY_LOCATION=${{ env.GCP_ARTIFACT_REGISTRY_LOCATION }},_GCP_PROJECT_ID=${{ env.GCP_PROJECT_ID }},_GCP_ARTIFACT_REGISTRY_NAME=${{ env.GCP_ARTIFACT_REGISTRY_NAME }},_GCP_CLOUDRUN_SERVICE=${{ env.GCP_CLOUDRUN_SERVICE }},_GITHUB_SHA=${{ github.sha }},_NEXT_PUBLIC_CMS=${{ env.NEXT_PUBLIC_CMS }},_NEXT_PUBLIC_TESSERACT=${{ env.NEXT_PUBLIC_TESSERACT }}
       
       # Uncomment for adding the latest tag to the latest image created
       - name: Add 'Latest' Tag to Development Environments 
