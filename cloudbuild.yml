@@ -8,6 +8,6 @@ steps:
     - --cache-ttl=336h
   # [END cloudbuild_image_yaml]
 substitutions:
-  # Add here the list of custom environmental variables that the app requires at buildtime
-  # _VARNAME: "VARVALUE"
+  # List of custom environmental variables required ar buildtime
+  # with the format _VARNAME: VARVALUE
   _ENVIRONMENT: development
