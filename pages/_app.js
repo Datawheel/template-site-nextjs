@@ -1,7 +1,8 @@
 import {MantineProvider} from "@mantine/core";
 import {DefaultSeo} from "next-seo";
+import {BespokeUSerProvider, storeWrapper} from "@datawheel/bespoke";
 
-export default function App(props) {
+function App(props) {
   const {Component, pageProps} = props;
 
   return (
@@ -15,8 +16,12 @@ export default function App(props) {
           colorScheme: "dark",
         }}
       >
-        <Component {...pageProps} />
+        <BespokeUserProvider>
+          <Component {...pageProps} />
+        </BespokeUserProvider>
       </MantineProvider>
     </>
   );
 }
+
+export default storeWrapper.withRedux(App);
