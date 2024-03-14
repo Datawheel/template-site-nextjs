@@ -1,6 +1,6 @@
 import {MantineProvider} from "@mantine/core";
 import {DefaultSeo} from "next-seo";
-import {BespokeUSerProvider, storeWrapper} from "@datawheel/bespoke";
+import {BespokeUserProvider, storeWrapper} from "@datawheel/bespoke";
 
 function App(props) {
   const {Component, pageProps} = props;
