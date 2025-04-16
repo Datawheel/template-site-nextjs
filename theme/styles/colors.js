@@ -1,17 +1,10 @@
-export function colors() {
+export function colors(colorScheme) {
   return ({
-    "primary-bg": "#000000",
-    "secondary-bg": "#cccccc",
-    "primary-text": "#FFFFFF",
-    "secondary-text": "#000000",
-    "accent": "#FAFE03",
-    "accent-shade": Array(10).fill("#FAFE03"),
+    accent: "#FFA63F",
+    accentshade: [
+      "#FFF4E6", "#FFE8CC", "#FFD8A8", "#FFBC6D", "#FFA63F", "#FF9D2B", "#FF8F0D", "#F76707", "#E8590C", "#D9480F",
+    ],
     white: "#FFFFFF",
-    "basalt-grey": "#999999",
     black: "#000000",
-    gray: "#212831",
-    blue: "#2E97FF",
-    pantone: "#C7CFD9",
-    pink: "#EF15BF"
   });
 }

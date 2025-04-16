@@ -1,17 +1,30 @@
 import {useMemo} from "react";
 import {colors, components, globalStyles} from "./styles";
 import {Heebo} from "../fonts/fonts";
+import {useLocalStorage, useHotkeys, useReducedMotion} from "@mantine/hooks";
+
+function customTheme(colorScheme, reduceMotion) {
+  return ({
+    fontFamily: Heebo.style.fontFamily,
+    primaryColor: "accentshade",
+    primaryShade: 6,
+    colorScheme,
+    colors: colors(colorScheme),
+    components: components(reduceMotion),
+    globalStyles,
+  });
+}
 
 export function useCustomTheme() {
-  const theme = useMemo(() => ({
-    colorScheme: "dark",
-    colors: colors(),
-    components: components(),
-    fontFamily: Heebo.style.fontFamily,
-    globalStyles,
-    primaryColor: "accent-shade",
-    primaryShade: 6,
-  }), []);
+  const [colorScheme, setColorScheme] = useLocalStorage({
+    key: "mantine-color-scheme",
+    defaultValue: "light",
+    getInitialValueInEffect: true,
+  });
+  const reduceMotion = useReducedMotion();
+  const theme = useMemo(() => customTheme(colorScheme, reduceMotion), [colorScheme, reduceMotion]);
 
-  return theme;
+  const toggleColorScheme = () => setColorScheme((current) => (current === "dark" ? "light" : "dark"));
+  useHotkeys([["mod+J", () => toggleColorScheme()]]);
+  return {theme, colorScheme, toggleColorScheme};
 }

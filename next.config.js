@@ -7,7 +7,8 @@ const nextConfig = {
   publicRuntimeConfig: {
     // Define your public environment variables for bespoke here
     bespoke_report_env_vars: {
-      TESSERACT: process.env.NEXT_PUBLIC_TESSERACT || "N/A",
+      API: process.env.NEXT_PUBLIC_API || "N/A",
+      OEC_API: process.env.NEXT_PUBLIC_OEC_API || "N/A",
     },
     // Add more variables as needed
   },

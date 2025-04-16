@@ -10,8 +10,7 @@ import clientLogo from "../logos/dw.svg";
 const useStyles = createStyles((theme) => ({
   footer: {
     width: "100%",
-    margin: "4rem 0",
-    backgroundColor: theme.colors["primary-bg"],
+    margin: "2rem 0",
     paddingTop: theme.spacing.lg,
     paddingBottom: theme.spacing.lg,
     [theme.fn.smallerThan("xs")]: {
@@ -61,22 +60,11 @@ const useStyles = createStyles((theme) => ({
     fontSize: theme.fontSizes.sm,
     fontWeight: 700,
     cursor: "pointer",
-    color: theme.colors["primary-text"],
     textTransform: "uppercase",
     transition: "color .5s ease",
-    "&:hover": {
-      color: theme.colors["accent"],
-    },
     [theme.fn.smallerThan("xs")]: {
       width: "100%",
       textAlign: "center"
-    }
-  },
-  whiteLink: {
-    textDecoration: "underline",
-    color: `${theme.colors.white} !important`,
-    "&:hover": {
-      color: `${theme.colors["accent"]} !important`
     }
   },
   socialLink: {
@@ -123,14 +111,14 @@ function CustomFooter() {
       target="_blank"
       className={classes.socialLink}
     >
-      <link.icon color="#ddd" />
+      <link.icon color={theme.colors["accent"]} />
     </Anchor>
   )), [socialLinks]);
 
   const menuLinks = useMemo(() => [
-    {href: "/", label: t("links.home"), new: false},
-    {href: "/method", label: t("links.method"), new: false},
-    {href: "/explore", label: t("links.explore"), new: false},
+    {href: "/", label: t("links.home")},
+    {href: "/method", label: t("links.method")},
+    {href: "/explore", label: t("links.explore")},
     {href: "https://datawheel.us", label: t("links.about"), external: true}
   ], []);
 
@@ -142,7 +130,6 @@ function CustomFooter() {
       target={link.external?"_blank":""}
     >
       <span>
-        {link.icon && <link.icon size={18} stroke={1.5} />}
         {link.label}
       </span>
     </Anchor>
@@ -164,7 +151,6 @@ function CustomFooter() {
               <Text size="sm">(+1) 555 2344-234</Text>
               <Text size="sm">
                 <Anchor
-                    className={classes.whiteLink}
                     href={"mailto:xxxx@xxxx"}
                     target="_blank"
                   >xxxx@xxx.xx
@@ -172,7 +158,6 @@ function CustomFooter() {
               </Text>
               <Text size="sm">
                 <Anchor
-                    className={classes.whiteLink}
                     href="https://xxx"
                     target="_blank"
                   >www.xxx.xx
@@ -188,6 +173,7 @@ function CustomFooter() {
             <Group mb="xl" position="right">
               {menuItems}
             </Group>
+            <Text size="sm" ta="right">{t("footer.text")}</Text>
             <Text size="sm" ta="right">© {new Date().getFullYear()} xxx</Text>
             <Text size="sm" ta="right">Desarrollado por: <Anchor className={classes.whiteLink} href="https://datawheel.us" target="_blank">
                 Datawheel

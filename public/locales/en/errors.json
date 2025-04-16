@@ -1,0 +1,20 @@
+{
+    "404": {
+      "title": "Page not found, sorry.",
+      "subtitle": "Are you lost? Let's start looking for a profile with data here:",
+      "action": "Search"
+    },
+    "500": {
+      "title": "Internal error, sorry.",
+      "subtitle": "An unexpected error has occurred. Please try again later. You can also navigate to a profile with data here:",
+      "action": "Search"
+    },
+    "client": {
+      "title": "Client error, sorry.",
+      "subtitle": "An error occurred on client. Please try again."
+    },
+    "server": {
+      "title": "Server error, sorry.",
+      "subtitle": "An error {statusCode} occurred on server. Please try again."
+    }
+  }

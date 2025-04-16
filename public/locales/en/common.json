@@ -1,8 +1,14 @@
 {
-  "title": "Bespoke Example Site",
+  "explore": {
+    "try_another": "Try another search.",
+    "search": "Search",
+    "filters_all": "All",
+    "no_results": "No results"
+  },
+  "title": "Bespoke Demo Site",
   "links": {
     "home": "Home",
-    "method": "Methodology",
+    "method": "Methond",
     "explore": "Explore",
     "about": "About"
   },

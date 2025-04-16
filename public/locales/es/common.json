@@ -1,11 +1,16 @@
 {
-  "title": "La complejidad económica en España",
+  "explore": {
+    "try_another": "Intente otra búsqueda.",
+    "search": "Buscar",
+    "filters_all": "Todos",
+    "no_results": "No hay resultados"
+  },
+  "title": "Bespoke Demo Site",
   "links": {
     "home": "Inicio",
-    "eci": "La complejidad económica en España",
-    "reportes": "Fichas",
-    "table": "Comercio",
-    "about": "Sobre COTEC"
+    "method": "Metodología",
+    "explore": "Explorar",
+    "about": "Acerca de"
   },
   "footer": {
     "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."

@@ -17,6 +17,7 @@ export const globalStyles = (theme) => {
       boxSizing: "border-box",
     },
     html: {
+      colorScheme: theme.colorScheme === "dark" ? "dark" : "light",
       scrollBehavior: "smooth",
       scrollSnapType: "y mandatory",
       [theme.fn.smallerThan("lg")]: {
@@ -28,7 +29,6 @@ export const globalStyles = (theme) => {
       position: "relative",
       WebkitFontSmoothing: "antialiased",
       MozOsxFontSmoothing: "grayscale",
-      backgroundColor: "var(--primary-bg)",
     },
     ".main-container": {
       paddingTop: "calc(var(--navbar-height) * 1.5)",
@@ -37,7 +37,7 @@ export const globalStyles = (theme) => {
       minHeight: "80vh",
     },
     ".d3plus-tooltip": {
-      backgroundColor: theme.colors["primary-bg"],
+      backgroundColor: theme.colors.white,
       zIndex: "1000 !important",
       minWidth: "250px",
       "& table": {
@@ -49,7 +49,6 @@ export const globalStyles = (theme) => {
         width: "100% !important"
       },
       "& tbody tr": {
-        borderTop: "1px solid var(--primary-bg) !important",
         "&:first-of-type": {
           borderTop: "0 !important"
         }
@@ -112,24 +111,7 @@ export const globalStyles = (theme) => {
       marginTop: "5px",
     },
     "#Profile":{
-      "& .mantine-Text-root": {
-        margin: 0,
-        "& a":{
-          color: "white",
-          textDecoration: "underline",
-        }
-      },
-      "& .mantine-Title-root": {
-        fontFamily: Heebo.style.fontFamily,
-      },
-      ".bespoke-stat-wrapper":{
-        ".mantine-Group-root:first-of-type":{
-          flexWrap: "nowrap"
-        }
-      },
-      "& .section-bespoke-loader": {
-        // zIndex: 1000,
-      },
+      
     },
     "small.bespoke-timestamp": {
       width: "100%",
@@ -137,18 +119,6 @@ export const globalStyles = (theme) => {
       color: "#444",
       display: "block"
     },
-    ".bespoke-explore-reports-selector": {
-      "& button:last-child": {
-        width: "175px",
-        position: "relative",
-        display: "flex",
-      }
-    },
-    ".bespoke-explore-reports-selector, .bespoke-explore-variant-selector": {
-      "& button .mantine-Button-icon svg": {
-       color: "black"
-      }
-    }
   }), []);
 
   return config;

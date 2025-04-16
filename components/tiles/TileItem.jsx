@@ -5,83 +5,10 @@ import {
 } from "@mantine/core";
 import Link from "next/link";
 
-function getSectionFromHSCode(hsCode, level) {
-  // Ensure the HS code is a positive integer
-  hsCode = Math.abs(parseInt(hsCode));
-
-  // Determine the divisor based on the specified level
-  let divisor;
-  switch (level) {
-      case 'HS2':
-          divisor = Math.pow(10, 2);
-          break;
-      case 'HS4':
-          divisor = Math.pow(10, 4);
-          break;
-      case 'HS6':
-          divisor = Math.pow(10, 6);
-          break;
-      default:
-          console.error('Invalid level. Supported values are "hs2", "hs4", or "hs6".');
-          return null;
-  }
-
-  // Extract the first two digits of the HS code to determine the section
-  const section = Math.floor(hsCode / divisor);
-
-  // Return the section ID
-  return section;
-}
-
 function TileItem(props) {
   const {
     background, isLarge = false, isRect = false, link = "#", title, id, subtitle, onClick = () => false,
   } = props;
-
-  const isHS = useMemo(() => link.indexOf("/informe/producto") === 0, [link]);
-
-  const iconUrl = useMemo(() => {
-    let iconPath = "/images/icons/"
-    switch(subtitle) {
-      case "Comunidad Autónoma":
-        iconPath += `subnational/communities/${id}.webp`;
-        break;
-      case "Provincia":
-        iconPath += `subnational/provinces/${id}.webp`;
-        break;
-      case "País":
-        iconPath += `country/country_${id.slice(2,5)}_circle.png`;
-        break;
-      case "Sección":
-        iconPath += `hs/hs_${id}_black.svg`;
-        break;
-      case "HS2":
-      case "HS4":
-      case "HS6":
-        const sectionId = getSectionFromHSCode(id, subtitle);
-        iconPath += `hs/hs_${sectionId}_black.svg`;
-        break;
-      default:
-        iconPath += "hs/hs_20_black.svg";
-        break;
-    }
-
-    return iconPath;
-  }, [subtitle, id]);
-
-  const finalSubtitle = useMemo(() => {
-    let finalText = subtitle;
-    switch(subtitle) {
-      case "Comercio":
-        finalText = "Datos de comercio";
-        break;
-      case "País":
-        finalText = "Ficha de país";
-        break;
-    }
-
-    return finalText;
-  }, [subtitle]);
 
   return (
     <Link
@@ -147,28 +74,6 @@ function TileItem(props) {
             }} 
           >
             <Stack noWrap align="center" spacing={5}>
-              {id
-                && 
-                <Box
-                  h={40}
-                  w={40}
-                  p={isHS ? 3 : 0}
-                  sx={(theme) => ({
-                    borderRadius: "50%",
-                    backgroundColor: theme.colors["accent-shade"][6],
-                  })}
-                >
-                  <Image
-                    src={iconUrl}
-                    width="100%"
-                    height="100%"
-                    alt={`${title} icon`}
-                    imageProps={{
-                      loading: "lazy"
-                    }}
-                  />
-                </Box>
-              }
               <Text
                 c="white"
                 fw={700}
@@ -180,7 +85,7 @@ function TileItem(props) {
               >
                 {title}
               </Text>
-              <Badge variant="filled" c={"black"}>{finalSubtitle}</Badge>
+              <Badge variant="filled" c={"black"}>{subtitle}</Badge>
             </Stack>
           </Flex>
         </BackgroundImage>

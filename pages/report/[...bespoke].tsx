@@ -119,7 +119,7 @@ function ReportPage(props) {
                   }
                 },
                 // Splashs
-                "&.bespoke-Section-1, &.bespoke-Section-3, &.bespoke-Section-60, &.bespoke-Section-84": {
+                /* "&.bespoke-Section-1, &.bespoke-Section-3, &.bespoke-Section-60, &.bespoke-Section-84": {
                   padding: "8rem 5rem",
                   [theme.fn.smallerThan("lg")]: {
                     padding: "8rem 3rem",
@@ -134,10 +134,10 @@ function ReportPage(props) {
                     "& .bespoke-section-col": {
                       
                       "&:nth-of-type(1)": {
-                        /*backgroundColor: "red"*/
+                        backgroundColor: "red"
                       },
                       "&:nth-of-type(2)": {
-                        /*backgroundColor: "green"*/
+                        backgroundColor: "green"
                       },
                       [theme.fn.smallerThan("md")]: {
                         minWidth: 0,
@@ -217,7 +217,7 @@ function ReportPage(props) {
                       },
                     }
                   }
-                  /*background: "none",
+                  background: "none",
                   padding: "100px",
                   "& .bespoke-section-col": {
                     padding: "2rem",
@@ -232,8 +232,8 @@ function ReportPage(props) {
                         margin: 0,
                       },
                     },
-                  },*/
-                },
+                  },
+                }, */
               },
               sticky: {
                 padding: "0px",
@@ -334,7 +334,7 @@ function ReportPage(props) {
   const {profileProps} = props;
   const {content_id, name} = profileProps;
 
-  const BASE_URL = new URL(`api/cms/member/image.png?member=${content_id}&format=thumb`, process.env.NEXT_PUBLIC_BASE_URL);
+  const BASE_URL = new URL(`api/cms/member/image?member=${content_id}&format=thumb`, process.env.NEXT_PUBLIC_BASE_URL);
 
   const seoConfig = {
     title: name ? `${name}: Exportaciones, importaciones, patrones de comercio y complejidad económica` : undefined,
@@ -353,7 +353,7 @@ function ReportPage(props) {
         {/* eslint-disable-next-line react/jsx-props-no-spreading */}
         <BespokeRenderer
           bespokeStyles={bespokeStyles}
-          profilePrefix="/informe"
+          profilePrefix="/report"
           translations={translations}
           loader={<LoadingOverlay className="report-bespoke-loader" visible/>}
           sectionLoader={<LoadingOverlay className="section-bespoke-loader" visible/>}
@@ -364,7 +364,7 @@ function ReportPage(props) {
   );
 }
 
-export const getStaticPaths = async () => {
+/* export const getStaticPaths = async () => {
   const db = await getDB();
   const geoProfiles = dbApiFactory(db).searchMember({
     query: "",
@@ -434,6 +434,7 @@ export const getStaticPaths = async () => {
 };
 
 // export const getStaticPaths = BespokeRendererStaticPaths({limit: 100, fallback:false});
+*/ 
 
 export const getStaticProps = async (context) => {
   const {locale = "es"} = context;
@@ -454,4 +455,4 @@ export default storeWrapper.withRedux(ReportPage);
 
 export const getStaticPaths = BespokeRendererStaticPaths({limit: 10});
 
-export const getStaticProps = BespokeRendererStaticProps();
+// export const getStaticProps = BespokeRendererStaticProps();

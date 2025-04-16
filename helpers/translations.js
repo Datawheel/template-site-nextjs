@@ -1,10 +1,3 @@
-export const exploreTranslations = {
-  "try_another": "Intente otra búsqueda.",
-  "search": "Buscar",
-  "filters_all": "Todos",
-  "no_results": "No hay resultados"
-};
-
 export const d3plusTranslation = {
   "and": "y",
   "Back": "Atrás",

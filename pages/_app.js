@@ -1,6 +1,6 @@
 import {BespokeUserProvider} from "@datawheel/bespoke/auth";
 import {BespokeExploreProvider} from "@datawheel/bespoke/explore";
-import {Container, MantineProvider} from "@mantine/core";
+import {ColorSchemeProvider, Container, MantineProvider} from "@mantine/core";
 import {appWithTranslation} from "next-i18next";
 import {useRouter} from "next/router";
 import {D3plusContext} from "d3plus-react";
@@ -21,14 +21,16 @@ import "nprogress/nprogress.css";
 
 function App(props) {
   const {Component, pageProps} = props;
-  const theme = useCustomTheme();
-  const config = useD3plusConfig();
 
   const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
   const {isFallback} = useRouter();
 
   const loading = useRouterLoadingState();
+
+  const {colorScheme, theme, toggleColorScheme} = useCustomTheme();
+  
+  const d3PlusConfig = useD3plusConfig();
 
   useEffect(() => {
     // Start GTM
@@ -40,36 +42,38 @@ function App(props) {
 
   return (
     <>
-      {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-      <MantineProvider
-        withGlobalStyles
-        withNormalizeCSS
-        theme={{
-          ...theme,
-        }}
-      >
-        <DefaultSeo {...defaultSEOGenerator(BASE_URL)} />
-        <D3plusContext.Provider value={config}>
-          {loading || isFallback
-            ? (
-              <CustomLoader />
-            )
-            : (
-              <>
-                <BespokeExploreProvider pageSize={12}>
-                  {!Component.hideNav && <CustomHeader />}
-                  <Container p={0} fluid className="app-container">
-                      <BespokeUserProvider>
-                        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-                        <Component {...pageProps} />
-                      </BespokeUserProvider>
-                  </Container>
-                  {!Component.hideFooter && <CustomFooter />}
-                </BespokeExploreProvider>
-              </>
-            )}
-        </D3plusContext.Provider>
-      </MantineProvider>
+      <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
+        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+        <MantineProvider
+          withGlobalStyles
+          withNormalizeCSS
+          theme={{
+            ...theme,
+          }}
+        >
+          <DefaultSeo {...defaultSEOGenerator(BASE_URL)} />
+          <D3plusContext.Provider value={d3PlusConfig}>
+            {loading || isFallback
+              ? (
+                <CustomLoader />
+              )
+              : (
+                <>
+                  <BespokeExploreProvider pageSize={12}>
+                    {!Component.hideNav && <CustomHeader />}
+                    <Container p={0} fluid className="app-container">
+                        <BespokeUserProvider>
+                          {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+                          <Component {...pageProps} />
+                        </BespokeUserProvider>
+                    </Container>
+                    {!Component.hideFooter && <CustomFooter />}
+                  </BespokeExploreProvider>
+                </>
+              )}
+          </D3plusContext.Provider>
+        </MantineProvider>
+      </ColorSchemeProvider>
     </>
   );
 }

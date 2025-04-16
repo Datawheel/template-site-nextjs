@@ -1,0 +1,20 @@
+{
+  "404": {
+    "title": "Página no encontrada, disculpa.",
+    "subtitle": "¿Está perdido? Comencemos buscando un perfil con datos aquí:",
+    "action": "Buscar"
+  },
+  "500": {
+    "title": "Error interno, disculpa.",
+    "subtitle": "Ha ocurrido un error inesperado. Por favor intente nuevamente más tarde. También puede navegar hacia algún perfil con datos aquí:",
+    "action": "Buscar"
+  },
+  "client": {
+    "title": "Error del cliente, disculpa.",
+    "subtitle": "Ha ocurrido un error del lado del cliente. Por favor, intente nuevamente."
+  },
+  "server": {
+    "title": "Error del servidor, disculpa.",
+    "subtitle": "Ocurrió un error {statusCode} en el servidor. Por favor, intente nuevamente."
+  }
+}

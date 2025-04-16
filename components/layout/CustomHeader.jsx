@@ -2,7 +2,6 @@ import {useMemo} from "react";
 import Link from "next/link";
 import {
   createStyles, Header, Container, Group, Burger, Paper, Transition, Text, useMantineTheme,
-  Badge,
   Box,
 } from "@mantine/core";
 import {useDisclosure, useWindowScroll} from "@mantine/hooks";
@@ -10,16 +9,15 @@ import {useTranslation} from "next-i18next";
 import {useRouter} from "next/router";
 import Image from "next/image";
 import {BespokeExploreModal} from "@datawheel/bespoke/explore";
-import TileWrapper from "../tiles/TileWrapper";
-import {exploreTranslations} from "../../helpers/translations";
+import ColorSchemeSwitch from "./ColorSchemeSwitch";
 
 import clientLogo from "../logos/dw.svg";
+import useExploreProps from "../../hooks/useExploreProps";
 
 const useStyles = createStyles((theme) => ({
   root: {
     position: "fixed",
     zIndex: 100,
-    backgroundColor: theme.colors["primary-bg"],
     border: 0,
     transition: "background-color .5s",
   },
@@ -130,6 +128,7 @@ function CustomHeader() {
   const router = useRouter();
   const {asPath} = router;
   const theme = useMantineTheme();
+  const exploreProps = useExploreProps();
 
   const isScrolled = useMemo(() => {
     if (typeof window !== "undefined") {
@@ -166,15 +165,9 @@ function CustomHeader() {
           <Text className={classes.text} c="accent-shade" tt="uppercase" fw={700}>{t("title")}</Text>
         </Group>
         <Group spacing={5} className={classes.links}>
+          <ColorSchemeSwitch />
           {items}
-          <BespokeExploreModal 
-            exploreProps={{
-              locale: "es",
-              profilePrefix: "/informe",
-              translations: exploreTranslations,
-              reportTile: TileWrapper
-            }}
-          />
+          <BespokeExploreModal exploreProps={exploreProps} />
         </Group>
         <Burger opened={opened} onClick={toggle} className={classes.burger} size="sm" />
 
@@ -182,14 +175,7 @@ function CustomHeader() {
           {(styles) => (
             <Paper className={classes.dropdown} withBorder style={styles}>
               {items}
-              <BespokeExploreModal 
-                exploreProps={{
-                  locale: "es",
-                  profilePrefix: "/informe",
-                  // translations: exploreTranslations,
-                  reportTile: TileWrapper
-                }}
-              >
+              <BespokeExploreModal exploreProps={exploreProps}>
                 <span className={classes.link}>Buscar</span>
               </BespokeExploreModal>
             </Paper>
